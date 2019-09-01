@@ -1,0 +1,80 @@
+<mat-toolbar color="primary">
+  <h1>Pedra, Papel ou Tesoura</h1>
+</mat-toolbar>
+
+<div class="bg-rockGame">
+  <div class="content">
+    <mat-card>
+      <mat-card-content>
+        <div class="content1" mat-elevation-z8>
+          <h3>Você</h3>
+          <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
+        </div>
+        <br />
+        <h4>Escolha:</h4>
+        <br />
+        <br />
+        <div class="content2">
+          <i
+            (click)="pick(0)"
+            [ngClass]="{ selectedWeapon: playerSelected === 0 }"
+            class="far fa-hand-rock"
+          ></i>
+          <i
+            (click)="pick(1)"
+            [ngClass]="{ selectedWeapon: playerSelected === 1 }"
+            class="far fa-hand-paper"
+          ></i>
+          <i
+            (click)="pick(2)"
+            [ngClass]="{ selectedWeapon: playerSelected === 2 }"
+            class="far fa-hand-scissors"
+          ></i>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <div class="content1" mat-elevation-z8>
+          <h3>Jogador 2</h3>
+          <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
+        </div>
+        <br /><br />
+
+        <div *ngIf="enemySelected !== -1" class="flex-container flex-center">
+          <i *ngIf="enemySelected === 0" class="far fa-hand-rock"></i>
+          <i *ngIf="enemySelected === 1" class="far fa-hand-paper"></i>
+          <i *ngIf="enemySelected === 2" class="far fa-hand-scissors"></i>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div
+    *ngIf="!loading && isResultShow"
+    class="flex-container flex-center"
+    style="flex-direction: column"
+  >
+    <div [ngSwitch]="theResult">
+      <ng-template [ngSwitchCase]="0">
+        <h2>Você venceu!</h2>
+      </ng-template>
+      <ng-template [ngSwitchCase]="1">
+        <h2>Você perdeu!</h2>
+      </ng-template>
+      <ng-template [ngSwitchCase]="2">
+        <h2>Empate!</h2>
+      </ng-template>
+      <ng-template ngSwitchDefault> </ng-template>
+    </div>
+    <br />
+    <p>Escolha novamente para continuar ou</p>
+    <br />
+    <button (click)="reset()" mat-raised-button color="primary" class="btn">
+      Limpar placar
+    </button>
+  </div>
+
+  <div class="spinner flex-container flex-center" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
