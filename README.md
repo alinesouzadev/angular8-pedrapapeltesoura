@@ -1,3 +1,3 @@
-# angular8-pedrapapeltesoura
+# Rock, Paper, Scissor
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular8-pedrapapeltesoura)
+[Click to Play](https://angular8-pedrapapeltesoura.stackblitz.io)
